@@ -147,6 +147,16 @@ public class BarrigaTest extends BaseTest {
 			.body("find{it.conta_id == 1559037}.saldo", is("100.00"));
 		}
 	
+	@Test
+	public void deveRemoverMovimentacao() {		
+		given()
+			.header("Authorization", "JWT " + TOKEN)
+		.when()
+			.delete("/transacoes/1457747")
+		.then()
+			.statusCode(204);
+		}
+	
 	private Movimentacao getMovimentacaoValida() {
 		Movimentacao mov = new Movimentacao();
 		mov.setConta_id(1559037);
